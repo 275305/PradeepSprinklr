@@ -3190,3 +3190,9 @@ java -ea -classpath C:\Users\Pradeep\Downloads\Eclipse-oxe\eclipse\configuration
 
 !ENTRY org.eclipse.m2e.logback.appender 2 0 2025-08-24 02:27:41.426
 !MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2025-08-24 02:34:18.000
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2025-08-24 02:34:18.005
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
