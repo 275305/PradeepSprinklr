@@ -1,0 +1,23 @@
+package day2;
+
+import org.testng.annotations.Test;
+import static io.restassured.RestAssured.*; // used for to avoid the Restassured.given() , Restassured.when(),RestrAssured.then()
+import static org.hamcrest.Matchers.*;  // to validate the body require hamcrest matchers
+import static io.restassured.matcher.RestAssuredMatchers.*;
+
+public class PathParamQueryParam {
+	
+		
+	@Test
+	public void pathParamQueryParam() {
+		
+	    given()
+	    
+	    .when()
+	    
+	    .then();
+		
+		
+	}
+
+}

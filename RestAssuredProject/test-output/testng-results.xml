@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2025-06-15T20:46:30 IST" name="Default suite" finished-at="2025-06-15T20:46:33 IST" duration-ms="3239">
+    <groups>
+    </groups>
+    <test started-at="2025-06-15T20:46:30 IST" name="Default test" finished-at="2025-06-15T20:46:33 IST" duration-ms="3239">
+      <class name="day3.ValidateResponseinQueryParameter">
+        <test-method signature="validateResponse()[pri:0, instance:day3.ValidateResponseinQueryParameter@2a3b5b47]" started-at="2025-06-15T20:46:30 IST" name="validateResponse" finished-at="2025-06-15T20:46:33 IST" duration-ms="3162" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- validateResponse -->
+      </class> <!-- day3.ValidateResponseinQueryParameter -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
