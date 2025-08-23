@@ -2,7 +2,7 @@
 <suite name="Automation Test Suite" verbose="1">
     <test name="Launch Browser Test">
         <classes>
-            <class name="test.LaunchBrowser"/>
+            <class name="src/test/java/test.LaunchBrowserTest"/>
         </classes>
     </test>
 </suite>
