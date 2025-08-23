@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="Automation Test Suite">
+    <test name="Launch Browser Test">
+        <classes>
+            <!-- Point to your Test Runner class -->
+            <class name="test.LaunchBrowser"/>
+        </classes>
+    </test>
+</suite>
