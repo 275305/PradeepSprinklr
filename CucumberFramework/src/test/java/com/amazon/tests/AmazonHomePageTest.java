@@ -3,7 +3,6 @@ package com.amazon.tests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import com.amazon.actions.AmazonHomePageAction;
-import com.amazon.base.AmazonBaseTest;
 public class AmazonHomePageTest extends AmazonBaseTest {
 
 

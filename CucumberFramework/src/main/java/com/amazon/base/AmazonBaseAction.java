@@ -15,14 +15,17 @@ public class AmazonBaseAction {
 	        this.driver = driver;
 	    }
 
-	    // Generic page creator
+	  	 // Generic page creator
 	    public <T extends AmazonBasePage> T createPage(Class<T> pageClass) {
 	        try {
 	            return pageClass.getDeclaredConstructor(WebDriver.class).newInstance(driver);
 	        } catch (Exception e) {
-	            throw new RuntimeException("❌ Failed to create page: " + pageClass.getName(), e);
+	        
+	        	throw new RuntimeException("Failed to create page" + pageClass.getName(), e);
+	          
 	        }
 	    }
+
 	}
 
 

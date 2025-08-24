@@ -9,10 +9,11 @@
 			<artifactId>webdrivermanager</artifactId>
 			<version>5.8.0</version>
 		</dependency>
+		<!-- Selenium -->
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-java</artifactId>
-			<version>4.21.0</version>
+			<version>4.25.0</version>
 		</dependency>
 		<!-- TestNG -->
 		<dependency>
@@ -45,6 +46,7 @@
 				<configuration>
 					<source>17</source>
 					<target>17</target>
+					<encoding>UTF-8</encoding>
 				</configuration>
 			</plugin>
 			<!-- Surefire plugin for TestNG -->
