@@ -17,7 +17,7 @@ public class Waits {
 	    public Waits(WebDriver driver) {
 	        this.driver = driver;
 	        // Default wait of 10 seconds (you can change as per project needs)
-	        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+	        this.wait = new WebDriverWait(driver, Duration.ofSeconds(40));
 	    }
 
 	    // Wait for presence of element
