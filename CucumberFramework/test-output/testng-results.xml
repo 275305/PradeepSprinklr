@@ -2,16 +2,16 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-08-24T02:04:45 IST" name="Automation Test Suite" finished-at="2025-08-24T02:04:53 IST" duration-ms="8470">
+  <suite started-at="2025-08-24T15:29:50 IST" name="Suite" finished-at="2025-08-24T15:29:59 IST" duration-ms="8917">
     <groups>
     </groups>
-    <test started-at="2025-08-24T02:04:45 IST" name="Launch Browser Test" finished-at="2025-08-24T02:04:53 IST" duration-ms="8470">
-      <class name="test.LaunchBrowser">
-        <test-method signature="getBrowser()[pri:0, instance:test.LaunchBrowser@8f4ea7c]" started-at="2025-08-24T02:04:45 IST" name="getBrowser" finished-at="2025-08-24T02:04:53 IST" duration-ms="8387" status="PASS">
+    <test started-at="2025-08-24T15:29:50 IST" name="Test" finished-at="2025-08-24T15:29:59 IST" duration-ms="8917">
+      <class name="page.EmpTest">
+        <test-method signature="getBrowser()[pri:0, instance:page.EmpTest@3590fc5b]" started-at="2025-08-24T15:29:51 IST" name="getBrowser" finished-at="2025-08-24T15:29:59 IST" duration-ms="8831" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getBrowser -->
-      </class> <!-- test.LaunchBrowser -->
-    </test> <!-- Launch Browser Test -->
-  </suite> <!-- Automation Test Suite -->
+      </class> <!-- page.EmpTest -->
+    </test> <!-- Test -->
+  </suite> <!-- Suite -->
 </testng-results>
