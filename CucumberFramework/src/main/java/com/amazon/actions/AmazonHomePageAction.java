@@ -1,0 +1,36 @@
+package com.amazon.actions;
+
+
+import com.amazon.base.AmazonBaseAction;
+import com.amazon.pages.AmazonHomePage;
+import org.openqa.selenium.WebDriver;
+
+
+public class AmazonHomePageAction extends AmazonBaseAction{
+	
+
+	
+
+	    private AmazonHomePage homePage;
+
+	    public AmazonHomePageAction(WebDriver driver) {
+	        super(driver);
+	        homePage = createPage(AmazonHomePage.class);
+	    }
+
+	    public void searchProduct(String product) {
+	        homePage.enterSearchText(product);
+	        homePage.clickSearchButton();
+	    }
+
+	    public void goToAccountMenu() {
+	        homePage.openAccountMenu();
+	    }
+
+	    public void goToCart() {
+	        homePage.openCart();
+	    }
+	}
+
+
+

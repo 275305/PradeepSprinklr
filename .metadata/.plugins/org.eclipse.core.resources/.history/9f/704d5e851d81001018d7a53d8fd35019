@@ -1,0 +1,5 @@
+package com.amazon.actions;
+
+public class AmazonHomePageAction {
+
+}
