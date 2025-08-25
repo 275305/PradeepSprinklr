@@ -3,6 +3,8 @@ package com.amazon.actions;
 
 import com.amazon.base.AmazonBaseAction;
 import com.amazon.pages.AmazonHomePage;
+import com.amazon.utils.Waits;
+
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
@@ -10,7 +12,7 @@ import org.testng.Assert;
 public class AmazonHomePageAction extends AmazonBaseAction{
 	
 
-	
+	 Waits waits = new Waits(driver);
 
 	    private AmazonHomePage homePage;
 
@@ -25,13 +27,17 @@ public class AmazonHomePageAction extends AmazonBaseAction{
 	        
 	        
 	    }
-	    public boolean verifyTitle() {
-	        String actualTitle = driver.getTitle();
-	        System.out.println("Page Title: " + actualTitle);
-	        String expectedKeyword = "laptop";
-	        return actualTitle != null && actualTitle.toLowerCase().contains(expectedKeyword.toLowerCase());
-	    }
-
+		
+		  public boolean verifyTitle(String expectedKeyword) { 
+			 boolean isTitle=false;
+			 
+			if(waits.forTitleContains(expectedKeyword)) {
+				isTitle=true;
+			}
+			
+			return isTitle;
+		  }
+		 
 
 	    public void goToAccountMenu() {
 	        homePage.openAccountMenu();

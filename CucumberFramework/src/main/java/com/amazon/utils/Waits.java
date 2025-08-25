@@ -7,69 +7,80 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.concurrent.TimeoutException;
 
 public class Waits {
 
-	    private WebDriver driver;
-	    private WebDriverWait wait;
+    private WebDriver driver;
+    private WebDriverWait wait;
 
-	    // Constructor
-	    public Waits(WebDriver driver) {
-	        this.driver = driver;
-	        // Default wait of 10 seconds (you can change as per project needs)
-	        this.wait = new WebDriverWait(driver, Duration.ofSeconds(40));
-	    }
-	    public static void forSometime(int millis) {
-	        try {
-	            Thread.sleep(millis);
-	        } catch (InterruptedException e) {
-	            Thread.currentThread().interrupt(); 
-	            e.printStackTrace();
-	        }
-	    }
+    // Constructor
+    public Waits(WebDriver driver) {
+        this.driver = driver;
+        // Default wait of 40 seconds
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(40));
+    }
 
+    // Static wait (not recommended for production, only debugging)
+    public static void forSometime(int millis) {
+        try {
+            Thread.sleep(millis);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            e.printStackTrace();
+        }
+    }
 
+    // Wait for presence of element
+    public WebElement forPresenceOfElement(By locator) {
+        return wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+    }
 
-	    // Wait for presence of element
-	    public WebElement forPresenceOfElement(By locator) {
-	        return wait.until(ExpectedConditions.presenceOfElementLocated(locator));
-	    }
+    // Wait for element to be visible
+    public WebElement forVisibilityOfElement(By locator) {
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+    }
 
-	    // Wait for element to be visible
-	    public WebElement forVisibilityOfElement(By locator) {
-	        return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
-	    }
+    // Wait for element to be clickable
+    public WebElement forElementToBeClickable(By locator) {
+        return wait.until(ExpectedConditions.elementToBeClickable(locator));
+    }
 
-	    // Wait for element to be clickable
-	    public WebElement forElementToBeClickable(By locator) {
-	        return wait.until(ExpectedConditions.elementToBeClickable(locator));
-	    }
+    // Click on element safely
+    public void click(By locator) {
+        forElementToBeClickable(locator).click();
+    }
 
-	    // Click on element safely
-	    public void click(By locator) {
-	        forElementToBeClickable(locator).click();
-	    }
+    // Send keys to element safely
+    public void sendKeys(By locator, String text) {
+        WebElement element = forVisibilityOfElement(locator);
+        element.clear();
+        element.sendKeys(text);
+    }
 
-	    // Send keys to element safely
-	    public void sendKeys(By locator, String text) {
-	        WebElement element = forVisibilityOfElement(locator);
-	        element.clear();
-	        element.sendKeys(text);
-	    }
+    // Get text of element
+    public String getText(By locator) {
+        return forVisibilityOfElement(locator).getText();
+    }
 
-	    // Get text of element
-	    public String getText(By locator) {
-	        return forVisibilityOfElement(locator).getText();
-	    }
+    // Just wait for few milliseconds (useful in debugging)
+    public void forSomeTime(long millis) {
+        try {
+            Thread.sleep(millis);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+    }
 
-	    // Just wait for few milliseconds (useful in debugging)
-	    public void forSomeTime(long millis) {
-	        try {
-	            Thread.sleep(millis);
-	        } catch (InterruptedException e) {
-	            Thread.currentThread().interrupt();
-	        }
-	    }
-	}
-
-
+    // ✅ New method: Wait until title contains expected keyword
+    public boolean forTitleContains(String expectedKeyword) {
+        try {
+            return wait.until(ExpectedConditions.titleContains(expectedKeyword));
+        } catch (Exception e) {
+            System.out.println("Title did not match expected keyword: " 
+                               + expectedKeyword 
+                               + " | Actual title: " + driver.getTitle());
+            return false;
+        }
+    }
+}

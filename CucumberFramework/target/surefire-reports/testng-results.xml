@@ -2,20 +2,20 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-08-25T23:30:55 IST" name="Amazon Suite" finished-at="2025-08-25T23:31:14 IST" duration-ms="19521">
+  <suite started-at="2025-08-26T00:24:02 IST" name="Amazon Suite" finished-at="2025-08-26T00:24:16 IST" duration-ms="14462">
     <groups>
     </groups>
-    <test started-at="2025-08-25T23:30:55 IST" name="RunSingleMethod" finished-at="2025-08-25T23:31:14 IST" duration-ms="19521">
+    <test started-at="2025-08-26T00:24:02 IST" name="RunSingleMethod" finished-at="2025-08-26T00:24:16 IST" duration-ms="14462">
       <class name="com.amazon.tests.AmazonHomePageTest">
-        <test-method is-config="true" signature="setUp()[pri:0, instance:com.amazon.tests.AmazonHomePageTest@5119fb47]" started-at="2025-08-25T23:30:55 IST" name="setUp" finished-at="2025-08-25T23:31:05 IST" duration-ms="10488" status="PASS">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.amazon.tests.AmazonHomePageTest@5119fb47]" started-at="2025-08-26T00:24:02 IST" name="setUp" finished-at="2025-08-26T00:24:08 IST" duration-ms="6150" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="verifySearchProduct()[pri:0, instance:com.amazon.tests.AmazonHomePageTest@5119fb47]" started-at="2025-08-25T23:31:05 IST" name="verifySearchProduct" finished-at="2025-08-25T23:31:14 IST" duration-ms="8677" status="PASS">
+        <test-method signature="verifySearchProduct()[pri:0, instance:com.amazon.tests.AmazonHomePageTest@5119fb47]" started-at="2025-08-26T00:24:08 IST" name="verifySearchProduct" finished-at="2025-08-26T00:24:16 IST" duration-ms="7938" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verifySearchProduct -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.amazon.tests.AmazonHomePageTest@5119fb47]" started-at="2025-08-25T23:31:14 IST" name="tearDown" finished-at="2025-08-25T23:31:14 IST" duration-ms="291" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.amazon.tests.AmazonHomePageTest@5119fb47]" started-at="2025-08-26T00:24:16 IST" name="tearDown" finished-at="2025-08-26T00:24:16 IST" duration-ms="307" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->

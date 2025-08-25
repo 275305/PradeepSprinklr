@@ -1,0 +1,49 @@
+package com.amazon.actions;
+
+
+import com.amazon.base.AmazonBaseAction;
+import com.amazon.pages.AmazonHomePage;
+import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
+
+
+public class AmazonHomePageAction extends AmazonBaseAction{
+	
+
+	
+
+	    private AmazonHomePage homePage;
+
+	    public AmazonHomePageAction(WebDriver driver) {
+	        super(driver);
+	        homePage = createPage(AmazonHomePage.class);
+	    }
+
+	    public void searchProduct(String product) {
+	        homePage.enterSearchText(product);
+	        homePage.clickSearchButton();
+	        
+	        
+	    }
+	    public boolean verifyTitle(String expectedKeyword) {
+	        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+	        try {
+	            return wait.until(ExpectedConditions.titleContains(expectedKeyword));
+	        } catch (TimeoutException e) {
+	            System.out.println("Page Title did not contain expected keyword within timeout. Actual title: " + driver.getTitle());
+	            return false;
+	        }
+	    }
+
+
+	    public void goToAccountMenu() {
+	        homePage.openAccountMenu();
+	    }
+
+	    public void goToCart() {
+	        homePage.openCart();
+	    }
+	}
+
+
+

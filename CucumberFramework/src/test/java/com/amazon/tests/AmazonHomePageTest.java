@@ -5,17 +5,15 @@ import org.testng.annotations.Test;
 import com.amazon.actions.AmazonHomePageAction;
 import com.amazon.utils.Waits;
 
-import static com.amazon.utils.Waits.*;
-
 public class AmazonHomePageTest extends AmazonBaseTest {
 
 	@Test()
 	public void verifySearchProduct() {
 		AmazonHomePageAction homeAction = new AmazonHomePageAction(driver);
 		homeAction.searchProduct("Laptop");
-		boolean isTitle = homeAction.verifyTitle();
-		Waits.forSometime(2000);
+		boolean isTitle = homeAction.verifyTitle("Laptop");
 		Assert.assertTrue(isTitle, "Validation Failed- Title is not Matching");
+		Waits.forSometime(2000);
 
 	}
 

@@ -9,7 +9,9 @@ import com.amazon.base.AmazonBasePage;
 public class AmazonHomePage extends AmazonBasePage{
 	
 	    // Locators
-	    public By searchBox    = By.xpath("//input[contains(@aria-label,'Search')]");
+	    
+	    public By searchBox = By.xpath("//input[contains(@id,'twotabsearchtextbox') and @type='text']");
+
 	    public By searchButton = By.id("nav-search-submit-button");
 	    public By accountMenu  = By.id("nav-link-accountList");
 	    public By cartButton   = By.id("nav-cart");
