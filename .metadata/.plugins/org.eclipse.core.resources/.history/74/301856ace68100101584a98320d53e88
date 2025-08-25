@@ -1,7 +1,6 @@
 package com.amazon.utils;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -53,32 +52,11 @@ public class Waits {
     }
 
     // Send keys to element safely
- // Send keys to element safely
     public void sendKeys(By locator, String text) {
-        WebElement element = null;
-
-        try {
-            // wait until element is visible & clickable
-            element = forElementToBeClickable(locator);
-
-            element.clear();
-            element.sendKeys(text);
-
-        } catch (StaleElementReferenceException e) {
-            // retry once if the element went stale
-            element = forElementToBeClickable(locator);
-            element.clear();
-            element.sendKeys(text);
-
-        } catch (Exception e) {
-            System.out.println("Failed to send keys to element: " + locator);
-            throw e; // rethrow so test fails with reason
-        }
+        WebElement element = forVisibilityOfElement(locator);
+        element.clear();
+        element.sendKeys(text);
     }
-
-    
-    
-    
 
     // Get text of element
     public String getText(By locator) {
