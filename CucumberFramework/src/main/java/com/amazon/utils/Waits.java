@@ -19,6 +19,16 @@ public class Waits {
 	        // Default wait of 10 seconds (you can change as per project needs)
 	        this.wait = new WebDriverWait(driver, Duration.ofSeconds(40));
 	    }
+	    public static void forSometime(int millis) {
+	        try {
+	            Thread.sleep(millis);
+	        } catch (InterruptedException e) {
+	            Thread.currentThread().interrupt(); 
+	            e.printStackTrace();
+	        }
+	    }
+
+
 
 	    // Wait for presence of element
 	    public WebElement forPresenceOfElement(By locator) {

@@ -5,10 +5,6 @@ import org.openqa.selenium.WebDriver;
 
 public class AmazonBaseAction {
 	
-
-
-	
-
 	    protected WebDriver driver;
 
 	    public AmazonBaseAction(WebDriver driver) {

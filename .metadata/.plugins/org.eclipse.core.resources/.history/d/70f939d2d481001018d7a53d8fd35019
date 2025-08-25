@@ -1,0 +1,53 @@
+package com.amazon.pages;
+
+
+import org.openqa.selenium.By;
+import org.testng.Assert;
+
+import com.amazon.base.AmazonBasePage;
+
+public class AmazonHomePage extends AmazonBasePage{
+	
+	    // Locators
+	    public By searchBox    = By.xpath("//input[contains(@aria-label,'Search')]");
+	    public By searchButton = By.id("nav-search-submit-button");
+	    public By accountMenu  = By.id("nav-link-accountList");
+	    public By cartButton   = By.id("nav-cart");
+	    
+
+	    // Constructor
+	    public AmazonHomePage(org.openqa.selenium.WebDriver driver) {
+	        super(driver);
+	    }
+
+	    // Page-level actions
+	    public void enterSearchText(String text) {
+	        waits.sendKeys(searchBox, text);
+	    }
+
+	    public void clickSearchButton() {
+	        waits.click(searchButton);
+	    }
+	    public void verifyTitle() {
+	    	
+	    	String actual=driver.getTitle();
+	    	System.out.print(actual);
+	    	String expected="laptop";
+	    	
+	    	
+	    	 Assert.assertTrue(actual.toLowerCase().contains(expected),"Search results page did not load correctly!");
+	    	
+	    	
+	    }
+
+	    public void openAccountMenu() {
+	        waits.click(accountMenu);
+	    }
+
+	    public void openCart() {
+	        waits.click(cartButton);
+	    }
+	}
+
+
+
