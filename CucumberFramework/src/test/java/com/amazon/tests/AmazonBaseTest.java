@@ -20,8 +20,8 @@ public class AmazonBaseTest {
 
 	    @BeforeMethod
 	    public void setUp() {
-	        String browser = "chrome"; // Can be extended to read from config
-	        String url = "https://www.amazon.com/";
+	        String browser = "chrome"; 
+	        String url = "https://www.flipkart.com/";
 
 	        switch (browser.toLowerCase()) {
 	            case "chrome":

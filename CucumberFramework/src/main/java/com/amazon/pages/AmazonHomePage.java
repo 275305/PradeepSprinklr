@@ -2,43 +2,32 @@ package com.amazon.pages;
 
 
 import org.openqa.selenium.By;
-import org.testng.Assert;
+
 
 import com.amazon.base.AmazonBasePage;
 
 public class AmazonHomePage extends AmazonBasePage{
+
+    // Constructor
+    public AmazonHomePage(org.openqa.selenium.WebDriver driver) {
+        super(driver);
+    }
 	
 	    // Locators
 	    
-	    public By searchBox = By.xpath("//input[contains(@id,'twotabsearchtextbox') and @type='text']");
-
-	    public By searchButton = By.id("nav-search-submit-button");
-	    public By accountMenu  = By.id("nav-link-accountList");
-	    public By cartButton   = By.id("nav-cart");
+	    public static By searchBox = By.cssSelector("input[placeholder=\"Search for Products, Brands and More\"]");
+	    public static By searchButton = By.cssSelector("button[type=\"submit\"]");
+	    
+	    public static By resultText = By.xpath("//span[starts-with(normalize-space(text()),'Showing')]");
+	    
+	   
 	    
 
-	    // Constructor
-	    public AmazonHomePage(org.openqa.selenium.WebDriver driver) {
-	        super(driver);
-	    }
 
-	    // Page-level actions
-	    public void enterSearchText(String text) {
-	        waits.sendKeys(searchBox, text);
-	    }
-
-	    public void clickSearchButton() {
-	        waits.click(searchButton);
-	    }
+	   
 	    
 
-	    public void openAccountMenu() {
-	        waits.click(accountMenu);
-	    }
-
-	    public void openCart() {
-	        waits.click(cartButton);
-	    }
+	   
 	}
 
 

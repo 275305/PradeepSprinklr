@@ -5,7 +5,8 @@
         <classes>
             <class name="com.amazon.tests.AmazonHomePageTest">
                 <methods>
-                    <include name="verifySearchProduct"/>
+                    <include name="verifyTitleProductFlipKartHomePage"/>
+                    <include name="searchProductFlipKartHomePage"/>
                 </methods>
             </class>
         </classes>
