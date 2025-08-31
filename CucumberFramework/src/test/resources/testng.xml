@@ -3,7 +3,7 @@
 <suite name="Amazon Suite">
     <test name="RunSingleMethod">
         <classes>
-            <class name="com.amazon.tests.AmazonHomePageTest">
+            <class name="com.flipkart.tests.FlipKartHomePageTest">
                 <methods>
                     <include name="verifyTitleProductFlipKartHomePage"/>
                     <include name="searchProductFlipKartHomePage"/>
