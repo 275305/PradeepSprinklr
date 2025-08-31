@@ -9,7 +9,7 @@ import com.flipkart.utils.Waits;
 public class FlipKartHomePageTest extends FlipKartBaseTest {
 
 	@Test()
-	private void verifyTitleProductFlipKartHomePage() {
+	private void verify_Title_Product_FlipKartHomePage() {
 		FlipKartHomePageAction amazonHomePageAction = new FlipKartHomePageAction(driver);
 		//Get the expected Title from ProductConfig class
 		FlipKartHomePageAction.expectedTitle = ProductConfig.get("expectedTitle");
@@ -26,7 +26,7 @@ public class FlipKartHomePageTest extends FlipKartBaseTest {
 	}
 	
 	@Test
-	private void searchProductFlipKartHomePage() {
+	private void verify_Search_Product_FlipKartHomePage() {
 		FlipKartHomePageAction flipkartHomePageAction = new FlipKartHomePageAction(driver);
 		FlipKartHomePageAction.searchTextValue= ProductConfig.get("searchText");
 		String searchResult = flipkartHomePageAction.searchProductFlipKartHomePage(FlipKartHomePageAction.searchTextValue);

@@ -6,10 +6,11 @@ import com.flipkart.utils.Waits;
 
 import org.openqa.selenium.WebDriver;
 
+import static com.flipkart.pages.FlipKartHomePage.*;
+
 public class FlipKartHomePageAction extends FlipKartBaseAction {
 	public static String searchTextValue;
 	public static String expectedTitle;
-	FlipKartHomePage homePage;
 	Waits waits = new Waits(driver);
 
 	// Constructor
@@ -27,12 +28,12 @@ public class FlipKartHomePageAction extends FlipKartBaseAction {
 
 	// search products
 	public String searchProductFlipKartHomePage(String product) {
-		waits.sendKeys(FlipKartHomePage.searchBox, product); // <-- added FlipKartHomePage reference
-		waits.click(FlipKartHomePage.searchButton);
-		waits.forPresenceOfElement(FlipKartHomePage.resultText);
+		waits.sendKeys(searchBox, product); // <-- added FlipKartHomePage reference
+		waits.click(searchButton);
+		waits.forPresenceOfElement(resultText);
 
 		// Return the text from result element
-		String results = waits.getText(FlipKartHomePage.resultText);
+		String results = waits.getText(resultText);
 		System.out.println("Search Results: " + results);
 		return results;
 	}

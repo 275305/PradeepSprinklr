@@ -5,9 +5,15 @@
         <classes>
             <class name="com.flipkart.tests.FlipKartHomePageTest">
                 <methods>
-                    <include name="verifyTitleProductFlipKartHomePage"/>
-                    <include name="searchProductFlipKartHomePage"/>
+                    <include name="verify_Title_Product_FlipKartHomePage"/>
+                    <include name="verify_Search_Product_FlipKartHomePage"/>
                 </methods>
+            </class>
+            <class name="com.flipkart.tests.FlipKartLoginPageTest">
+            <methods>
+            <include name="verify_Login_Functionality_FlipKartLoginPage">
+            </include>
+            </methods>
             </class>
         </classes>
     </test>
