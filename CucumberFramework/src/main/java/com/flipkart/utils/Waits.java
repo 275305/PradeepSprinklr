@@ -1,0 +1,108 @@
+package com.flipkart.utils;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.StaleElementReferenceException;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
+import java.util.concurrent.TimeoutException;
+
+public class Waits {
+
+    private WebDriver driver;
+    private WebDriverWait wait;
+
+    // Constructor
+    public Waits(WebDriver driver) {
+        this.driver = driver;
+        // Default wait of 40 seconds
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(40));
+    }
+
+    // Static wait (not recommended for production, only debugging)
+    public static void forSometime(int millis) {
+        try {
+            Thread.sleep(millis);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            e.printStackTrace();
+        }
+    }
+
+    // Wait for presence of element
+    public WebElement forPresenceOfElement(By locator) {
+        return wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+    }
+
+    // Wait for element to be visible
+    public WebElement forVisibilityOfElement(By locator) {
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+    }
+
+    // Wait for element to be clickable
+    public WebElement forElementToBeClickable(By locator) {
+        return wait.until(ExpectedConditions.elementToBeClickable(locator));
+    }
+
+    // Click on element safely
+    public void click(By locator) {
+        forElementToBeClickable(locator).click();
+    }
+
+    // Send keys to element safely
+ // Send keys to element safely
+    public void sendKeys(By locator, String text) {
+        WebElement element = null;
+
+        try {
+            // wait until element is visible & clickable
+            element = forElementToBeClickable(locator);
+
+            element.clear();
+            element.sendKeys(text);
+
+        } catch (StaleElementReferenceException e) {
+            // retry once if the element went stale
+            element = forElementToBeClickable(locator);
+            element.clear();
+            element.sendKeys(text);
+
+        } catch (Exception e) {
+            System.out.println("Failed to send keys to element: " + locator);
+            throw e; // rethrow so test fails with reason
+        }
+    }
+
+    
+    
+    
+
+    // Get text of element
+    public String getText(By locator) {
+        return forVisibilityOfElement(locator).getText();
+    }
+
+    // Just wait for few milliseconds (useful in debugging)
+    public void forSomeTime(long millis) {
+        try {
+            Thread.sleep(millis);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+    }
+
+    // ✅ New method: Wait until title contains expected keyword
+    public boolean forTitleContains(String expectedKeyword) {
+        try {
+            return wait.until(ExpectedConditions.titleContains(expectedKeyword));
+        } catch (Exception e) {
+            System.out.println("Title did not match expected keyword: " 
+                               + expectedKeyword 
+                               + " | Actual title: " + driver.getTitle());
+            return false;
+        }
+    }
+}
