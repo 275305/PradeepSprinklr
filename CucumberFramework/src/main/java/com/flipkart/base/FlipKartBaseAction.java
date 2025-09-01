@@ -1,18 +1,18 @@
-package com.amazon.base;
+package com.flipkart.base;
 
 
 import org.openqa.selenium.WebDriver;
 
-public class AmazonBaseAction {
+public class FlipKartBaseAction {
 	
 	    protected WebDriver driver;
 
-	    public AmazonBaseAction(WebDriver driver) {
+	    public FlipKartBaseAction(WebDriver driver) {
 	        this.driver = driver;
 	    }
 
 	  	 // Generic page creator
-	    public <T extends AmazonBasePage> T createPage(Class<T> pageClass) {
+	    public <T extends FlipKartBasePage> T createPage(Class<T> pageClass) {
 	        try {
 	            return pageClass.getDeclaredConstructor(WebDriver.class).newInstance(driver);
 	        } catch (Exception e) {

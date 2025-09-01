@@ -1,4 +1,4 @@
-package com.amazon.tests;
+package com.flipkart.tests;
 
 import java.time.Duration;
 import org.openqa.selenium.WebDriver;
@@ -10,7 +10,7 @@ import org.testng.annotations.BeforeMethod;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class AmazonBaseTest {
+public class FlipKartBaseTest {
 	
 	
 
@@ -20,8 +20,8 @@ public class AmazonBaseTest {
 
 	    @BeforeMethod
 	    public void setUp() {
-	        String browser = "chrome"; // Can be extended to read from config
-	        String url = "https://www.amazon.com/";
+	        String browser = "chrome"; 
+	        String url = "https://www.flipkart.com/";
 
 	        switch (browser.toLowerCase()) {
 	            case "chrome":

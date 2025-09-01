@@ -1,4 +1,4 @@
-package com.amazon.utils;
+package com.flipkart.utils;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
