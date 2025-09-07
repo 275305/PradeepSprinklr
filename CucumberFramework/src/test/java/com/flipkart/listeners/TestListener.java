@@ -1,67 +1,73 @@
 package com.flipkart.listeners;
 
+import com.aventstack.extentreports.Status;
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.flipkart.reports.ExtentManager;
+import com.flipkart.utils.ScreenshotUtil;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
-
-import com.aventstack.extentreports.ExtentReports;
-import com.aventstack.extentreports.ExtentTest;
-import com.aventstack.extentreports.MediaEntityBuilder;
-import com.flipkart.reports.ExtentManager;
-import com.flipkart.reports.ExtentTestManager;
-import com.flipkart.utils.ScreenshotUtil;
-
 import org.openqa.selenium.WebDriver;
-import org.testng.Reporter;
 
 public class TestListener implements ITestListener {
 
-    private static ExtentReports extent = ExtentManager.getInstance();
+    private static ExtentReports extent;
+    private static ThreadLocal<ExtentTest> testThread = new ThreadLocal<>();
     private static ThreadLocal<WebDriver> driverThread = new ThreadLocal<>();
 
-    // Helper to set driver in listener
     public static void setDriver(WebDriver driver) {
         driverThread.set(driver);
     }
 
-    private WebDriver getDriver() {
+    public static WebDriver getDriver() {
         return driverThread.get();
+    }
+
+    private static ExtentReports getExtent() {
+        if (extent == null) {
+            try {
+                extent = ExtentManager.getInstance();
+            } catch (Exception e) {
+                throw new RuntimeException("❌ Failed to initialize ExtentReports", e);
+            }
+        }
+        return extent;
     }
 
     @Override
     public void onTestStart(ITestResult result) {
-        ExtentTest test = extent.createTest(result.getMethod().getMethodName());
-        ExtentTestManager.setTest(test);
+        ExtentTest test = getExtent().createTest(result.getMethod().getMethodName());
+        testThread.set(test);
     }
 
     @Override
     public void onTestSuccess(ITestResult result) {
-        ExtentTestManager.getTest().pass("✅ Test Passed");
+        testThread.get().log(Status.PASS, "Test Passed");
     }
 
     @Override
     public void onTestFailure(ITestResult result) {
-        // Capture screenshot
-        String screenshotPath = ScreenshotUtil.captureScreenshot(getDriver(), result.getMethod().getMethodName());
+        testThread.get().log(Status.FAIL, "Test Failed: " + result.getThrowable());
 
-        try {
-            ExtentTestManager.getTest()
-                    .fail("❌ Test Failed: " + result.getThrowable(),
-                            MediaEntityBuilder.createScreenCaptureFromPath(screenshotPath).build());
-        } catch (Exception e) {
-            ExtentTestManager.getTest().fail("❌ Failed but screenshot could not be attached.");
+        WebDriver driver = getDriver();
+        if (driver != null) {
+            try {
+                String screenshotPath = ScreenshotUtil.captureScreenshot(driver, result.getName());
+                testThread.get().addScreenCaptureFromPath(screenshotPath);
+            } catch (Exception e) {
+                testThread.get().log(Status.WARNING, " Screenshot could not be attached: " + e.getMessage());
+            }
         }
-
-        Reporter.log("Screenshot saved at: " + screenshotPath);
     }
 
     @Override
     public void onTestSkipped(ITestResult result) {
-        ExtentTestManager.getTest().skip("⚠️ Test Skipped");
+        testThread.get().log(Status.SKIP, "Test Skipped: " + result.getThrowable());
     }
 
     @Override
     public void onFinish(ITestContext context) {
-        extent.flush(); // Save report
+        getExtent().flush();
     }
 }
