@@ -1,17 +1,18 @@
-# Ignore Eclipse junk
-.metadata/
-.classpath
-.project
-.settings/
+# Maven target
+/target/
 
-# Ignore IntelliJ IDEA files
+# Eclipse files
+/.classpath
+/.project
+/.settings/
+/.metadata/
+
+# Test outputs
+/test-output/
+
+# Logs
+*.log
+
+# IDE specific
 .idea/
 *.iml
-
-# Ignore build outputs
-target/
-bin/
-
-# Ignore OS junk
-.DS_Store
-Thumbs.db
