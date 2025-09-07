@@ -1,20 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Amazon Suite">
-    <test name="RunSingleMethod">
-        <classes>
-            <class name="com.flipkart.tests.FlipKartHomePageTest">
-                <methods>
-                    <include name="verify_Title_Product_FlipKartHomePage"/>
-                    <include name="verify_Search_Product_FlipKartHomePage"/>
-                </methods>
-            </class>
-            <class name="com.flipkart.tests.FlipKartLoginPageTest">
-            <methods>
-            <include name="verify_Login_Functionality_FlipKartLoginPage">
-            </include>
-            </methods>
-            </class>
-        </classes>
-    </test>
+<suite name="Flipkart Suite">
+
+	<!-- Attach Listener for Extent Reports -->
+	<listeners>
+		<listener class-name="com.flipkart.listeners.TestListener" />
+	</listeners>
+	<test name="Flipkart Tests">
+		<classes>
+			<class name="com.flipkart.tests.FlipKartHomePageTest" />
+		</classes>
+	</test>
 </suite>

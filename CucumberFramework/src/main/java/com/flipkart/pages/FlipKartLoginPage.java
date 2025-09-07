@@ -20,6 +20,17 @@ public class FlipKartLoginPage extends FlipKartBasePage {
 	
 	public static By requestOTP = By.xpath("//button[text()='Request OTP']");
 	
+	public static By pradeepMyProfile = By.xpath("//span[normalize-space()='Pradeep']");
+	
+	public static By myProfile = By.xpath("//li[normalize-space()='My Profile']");
+	
+	public static By manageAddress = By.xpath("//div[normalize-space()='Manage Addresses']");
+	
+	public static By threeDots = By.xpath("//div[@class='rApBmn']//img");
+	
+	public static By editButton = By.xpath("//span[normalize-space()='Edit']");
+	
+		
 	
 
 }

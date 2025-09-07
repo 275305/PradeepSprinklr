@@ -1,5 +1,6 @@
 package com.flipkart.tests;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.flipkart.actions.FlipKartLoginPageActions;
@@ -12,10 +13,8 @@ public class FlipKartLoginPageTest extends FlipKartBaseTest {
 
 		FlipKartLoginPageActions flipKartLoginPageActions = new FlipKartLoginPageActions(driver);
 		FlipKartLoginPageActions.mobileNumberValue = "8919384728";
-		
-
-		flipKartLoginPageActions.verifyLoginFunctionalityFlipKartLoginPage(FlipKartLoginPageActions.mobileNumberValue);
-
+		boolean isEditBuutonDisplay=flipKartLoginPageActions.verifyLoginFunctionalityFlipKartLoginPage(FlipKartLoginPageActions.mobileNumberValue);
+        Assert.assertTrue(isEditBuutonDisplay, "Validation Failed- Edit Button is not Present");
 	}
 
 }
