@@ -8,50 +8,47 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
+import com.flipkart.listeners.TestListener;   // ✅ Import your listener
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class FlipKartBaseTest {
-	
-	
 
-	
+    protected WebDriver driver;
 
-	    protected WebDriver driver;
+    @BeforeMethod
+    public void setUp() {
+        String browser = "chrome";
+        String url = "https://www.flipkart.com/";
 
-	    @BeforeMethod
-	    public void setUp() {
-	        String browser = "chrome"; 
-	        String url = "https://www.flipkart.com/";
+        switch (browser.toLowerCase()) {
+            case "chrome":
+                WebDriverManager.chromedriver().setup();
+                driver = new ChromeDriver();
+                break;
+            case "firefox":
+                WebDriverManager.firefoxdriver().setup();
+                driver = new FirefoxDriver();
+                break;
+            case "edge":
+                WebDriverManager.edgedriver().setup();
+                driver = new EdgeDriver();
+                break;
+            default:
+                throw new RuntimeException(" Browser not supported: " + browser);
+        }
 
-	        switch (browser.toLowerCase()) {
-	            case "chrome":
-	                WebDriverManager.chromedriver().setup();
-	                driver = new ChromeDriver();
-	                break;
-	            case "firefox":
-	                WebDriverManager.firefoxdriver().setup();
-	                driver = new FirefoxDriver();
-	                break;
-	            case "edge":
-	                WebDriverManager.edgedriver().setup();
-	                driver = new EdgeDriver();
-	                break;
-	            default:
-	                throw new RuntimeException(" Browser not supported: " + browser);
-	        }
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        driver.get(url);
 
-	        driver.manage().window().maximize();
-	        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-	        driver.get(url);
-	    }
+        // ✅ Register driver with listener so screenshots work
+        TestListener.setDriver(driver);
+    }
 
-	    @AfterMethod
-	    public void tearDown() {
-	        if (driver != null) {
-	            driver.quit();
-	        }
-	    }
-	}
-
-
-
+    @AfterMethod
+    public void tearDown() {
+        if (driver != null) {
+            driver.quit();
+        }
+    }
+}
