@@ -1,5 +1,0 @@
-com\amazon\base\AmazonBaseAction.class
-com\amazon\pages\AmazonHomePage.class
-com\amazon\base\AmazonBasePage.class
-com\amazon\actions\AmazonHomePageAction.class
-com\amazon\utils\Waits.class

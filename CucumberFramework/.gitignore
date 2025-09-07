@@ -1,0 +1,22 @@
+# === Build outputs ===
+target/
+bin/
+
+# === Test / Report outputs ===
+test-output/
+*.html
+*.log
+
+# === Eclipse ===
+.metadata/
+.classpath
+.project
+.settings/
+
+# === IntelliJ IDEA ===
+.idea/
+*.iml
+
+# === OS junk ===
+.DS_Store
+Thumbs.db
