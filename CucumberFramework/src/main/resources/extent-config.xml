@@ -1,0 +1,8 @@
+<extentreports>
+    <configuration>
+        <reportName>Flipkart Automation Report</reportName>
+        <documentTitle>Flipkart Test Execution</documentTitle>
+        <theme>dark</theme>
+        <encoding>utf-8</encoding>
+    </configuration>
+</extentreports>
