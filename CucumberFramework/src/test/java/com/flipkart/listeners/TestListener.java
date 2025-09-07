@@ -26,11 +26,7 @@ public class TestListener implements ITestListener {
 
     private static ExtentReports getExtent() {
         if (extent == null) {
-            try {
-                extent = ExtentManager.getInstance();
-            } catch (Exception e) {
-                throw new RuntimeException("❌ Failed to initialize ExtentReports", e);
-            }
+            extent = ExtentManager.getInstance(); // ✅ No try/catch needed now
         }
         return extent;
     }
