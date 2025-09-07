@@ -12,36 +12,40 @@ public class ExtentManager {
 
     public static synchronized ExtentReports getInstance() {
         if (extent == null) {
+            // Create timestamp (e.g., 2025-09-07_12-45-30)
+            String timestamp = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss").format(new Date());
+
+            // Ensure output directory exists
+            String reportsDir = System.getProperty("user.dir") + File.separator + "test-output";
+            new File(reportsDir).mkdirs();
+
+            // Build dynamic report file path
+            String reportPath = reportsDir + File.separator + "ExtentReport_" + timestamp + ".html";
+
+            ExtentSparkReporter spark = new ExtentSparkReporter(reportPath);
+
+            // ✅ Load external XML config for styling
             try {
-                // Create timestamp (e.g., 2025-09-07_12-45-30)
-                String timestamp = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss").format(new Date());
-
-                // Ensure output directory exists
-                String reportsDir = System.getProperty("user.dir") + File.separator + "test-output";
-                new File(reportsDir).mkdirs();
-
-                // Build dynamic report file path
-                String reportPath = reportsDir + File.separator + "ExtentReport_" + timestamp + ".html";
-
-                ExtentSparkReporter spark = new ExtentSparkReporter(reportPath);
-
-                // ✅ Load external config safely
-                File configFile = new File(System.getProperty("user.dir") + File.separator + "extent-config.xml");
-                if (configFile.exists()) {
-                    spark.loadXMLConfig(configFile);
-                }
-
-                extent = new ExtentReports();
-                extent.attachReporter(spark);
-
-                // Add system/environment info
-                extent.setSystemInfo("OS", System.getProperty("os.name"));
-                extent.setSystemInfo("Java Version", System.getProperty("java.version"));
-                extent.setSystemInfo("Tester", "Pradeep");
-
+                spark.loadXMLConfig(new File(System.getProperty("user.dir")
+                        + File.separator + "src"
+                        + File.separator + "main"
+                        + File.separator + "resources"
+                        + File.separator + "extent-config.xml"));
             } catch (Exception e) {
-                throw new RuntimeException("❌ Failed to initialize ExtentReports", e);
+                System.out.println("⚠️ Could not load extent-config.xml: " + e.getMessage());
             }
+
+            // Fallback configs (can be overridden by XML)
+            spark.config().setDocumentTitle("Flipkart Automation Report");
+            spark.config().setReportName("Regression Test Report");
+
+            extent = new ExtentReports();
+            extent.attachReporter(spark);
+
+            // Add system/environment info
+            extent.setSystemInfo("OS", System.getProperty("os.name"));
+            extent.setSystemInfo("Java Version", System.getProperty("java.version"));
+            extent.setSystemInfo("Tester", "Pradeep");
         }
         return extent;
     }
